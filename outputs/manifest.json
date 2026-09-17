@@ -1,0 +1,12 @@
+{
+  "name": "小账本 · 记账与预算",
+  "short_name": "小账本",
+  "description": "收支记账、分类与子分类、购物评价、预算、语音快记、快捷指令录入",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2f3f7",
+  "theme_color": "#0a84ff",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

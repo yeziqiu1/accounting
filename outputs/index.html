@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="auto">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0a84ff" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="小账本" />
+<meta name="description" content="收支记账、分类预算、购物评价、语音快记与快捷指令录入" />
+<title>小账本 · 记账与预算</title>
+<link rel="icon" href="icon.svg" />
+<link rel="apple-touch-icon" href="icon.svg" />
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="rail" aria-label="主导航">
+    <div class="brand">
+      <span class="brand-mark">账</span>
+      <div class="brand-text">
+        <strong>小账本</strong>
+        <span>花得明白，存得踏实</span>
+      </div>
+    </div>
+    <nav class="rail-nav" data-nav></nav>
+    <div class="rail-foot">
+      <button class="btn-ghost" data-action="theme-toggle" title="切换浅色 / 深色">
+        <span class="ico" data-theme-icon>◐</span><span>外观</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1 id="pageTitle">概览</h1>
+        <p id="pageSub">今天的收支一眼看清</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn-icon" data-action="open-voice" title="语音快记">🎙️</button>
+        <button class="btn-icon" data-action="open-entry" title="记一笔">＋</button>
+      </div>
+    </header>
+
+    <div class="scroll" id="scroll">
+      <section class="view" id="view-overview"></section>
+      <section class="view" id="view-records"></section>
+      <section class="view" id="view-budget"></section>
+      <section class="view" id="view-categories"></section>
+      <section class="view" id="view-more"></section>
+    </div>
+  </main>
+
+  <nav class="tabbar" data-nav aria-label="主导航"></nav>
+</div>
+
+<button class="fab" data-action="open-entry" aria-label="记一笔"><span>＋</span></button>
+
+<div class="scrim" id="scrim" hidden></div>
+
+<!-- 记账表单 -->
+<section class="sheet" id="sheet" hidden aria-modal="true" role="dialog" aria-label="记一笔">
+  <div class="sheet-grip"></div>
+  <div class="sheet-head">
+    <button class="btn-text" data-action="close-sheet">取消</button>
+    <strong id="sheetTitle">记一笔</strong>
+    <button class="btn-text danger" data-action="delete-entry" id="deleteBtn" hidden>删除</button>
+  </div>
+  <div class="sheet-body" id="entryForm"></div>
+</section>
+
+<!-- 语音快记 -->
+<section class="sheet sheet-center" id="voiceSheet" hidden aria-modal="true" role="dialog" aria-label="语音快记">
+  <div class="sheet-grip"></div>
+  <div class="sheet-head">
+    <button class="btn-text" data-action="close-voice">关闭</button>
+    <strong>语音快记</strong>
+    <span style="width:44px"></span>
+  </div>
+  <div class="voice-wrap" id="voiceBody"></div>
+</section>
+
+<!-- 分类编辑 -->
+<section class="sheet sheet-center" id="catSheet" hidden aria-modal="true" role="dialog" aria-label="编辑分类">
+  <div class="sheet-grip"></div>
+  <div class="sheet-head">
+    <button class="btn-text" data-action="close-cat">取消</button>
+    <strong id="catSheetTitle">编辑分类</strong>
+    <button class="btn-text" data-action="cat-save">保存</button>
+  </div>
+  <div class="sheet-body" id="catForm"></div>
+</section>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
